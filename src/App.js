@@ -1,5 +1,6 @@
 import "./App.css";
 import React from "react";
+import ContactForm from "./components/contactForm";
 import Listing from "./components/listing";
 
 class App extends React.Component {
@@ -44,26 +45,43 @@ class App extends React.Component {
     ],
   };
 
-  sortHandler = () => {
+  handleSort = () => {
     const contacts = [...this.state.contacts];
     contacts.sort((a, b) => (a.last > b.last ? 1 : -1));
     this.setState({ contacts });
   };
 
-  deleteHandler = (contactID) => {
+  handleDelete = (contactID) => {
     const contacts = this.state.contacts.filter((c) => c.id != contactID);
     console.log(contacts);
     this.setState({ contacts });
   };
 
+  handleAdd = (formFields) => {
+    const contacts = [...this.state.contacts];
+    const { firstName, lastName, phone } = formFields;
+    contacts.push({
+      id: contacts.length + 1,
+      first: firstName,
+      last: lastName,
+      phone: phone,
+    });
+    this.setState({ contacts });
+  };
+
+  // handleInputChange = (event) => {
+  //   console.log(event);
+  // };
+
   render() {
     return (
       <React.Fragment>
+        <ContactForm onAdd={this.handleAdd} />
         <Listing
           key={this.state.id}
           contacts={this.state.contacts}
-          onSort={this.sortHandler}
-          onDelete={this.deleteHandler}
+          onSort={this.handleSort}
+          onDelete={this.handleDelete}
         />
       </React.Fragment>
     );

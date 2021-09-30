@@ -8,7 +8,11 @@ class Listing extends React.Component {
         <button onClick={() => this.props.onSort()}>Sort</button>
         <div className="contact-list">
           {this.props.contacts.map((contact) => (
-            <Contact contact={contact} onDelete={this.props.onDelete} />
+            <Contact
+              key={contact.id}
+              contact={contact}
+              onDelete={this.props.onDelete}
+            />
           ))}
         </div>
       </React.Fragment>
