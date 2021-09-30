@@ -1,0 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: none;
+}
+
+.phonebook {
+  width: 100%;
+  max-width: 600px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  padding: 2rem;
+}
+
+.contact-list {
+  margin: 2rem 0;
+  display: table;
+
+  &__row {
+    display: table-row;
+
+    > div {
+      display: table-cell;
+    }
+  }
+}

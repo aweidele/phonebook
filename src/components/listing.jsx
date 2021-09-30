@@ -5,7 +5,6 @@ class Listing extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <button onClick={() => this.props.onSort()}>Sort</button>
         <div className="contact-list">
           {this.props.contacts.map((contact) => (
             <Contact

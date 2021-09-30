@@ -1,4 +1,4 @@
-import "./App.css";
+import "./App.scss";
 import React from "react";
 import ContactForm from "./components/contactForm";
 import Listing from "./components/listing";
@@ -75,7 +75,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
+      <div class="phonebook">
         <ContactForm onAdd={this.handleAdd} />
         <Listing
           key={this.state.id}
@@ -83,7 +83,7 @@ class App extends React.Component {
           onSort={this.handleSort}
           onDelete={this.handleDelete}
         />
-      </React.Fragment>
+      </div>
     );
   }
 }

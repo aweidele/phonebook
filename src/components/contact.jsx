@@ -4,12 +4,21 @@ class Contact extends React.Component {
   render() {
     const { first, last, id, phone } = this.props.contact;
     return (
-      <div>
-        <span>
+      <div class="contact-list__row">
+        <div>
+          <button>
+            <i class="far fa-star"></i>
+          </button>
+        </div>
+        <div>
           {first} {last}
-        </span>
-        <span>{phone}</span>
-        <button onClick={() => this.props.onDelete(id)}>Delete</button>
+        </div>
+        <div>{phone}</div>
+        <div>
+          <button onClick={() => this.props.onDelete(id)}>
+            <i class="fas fa-trash-alt"></i>
+          </button>
+        </div>
       </div>
     );
   }
