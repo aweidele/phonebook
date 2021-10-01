@@ -2,22 +2,34 @@ import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { faPhone } from "@fortawesome/free-solid-svg-icons";
+import avatar from "../avatar.png";
 
 class Contact extends React.Component {
   render() {
     const { first, last, id, phone } = this.props.contact;
     return (
       <div class="contact-list__row">
-        <div>
+        <div className="contact-list__fav">
           <button className="btn btn-icon">
             <FontAwesomeIcon icon={faStar} />
           </button>
         </div>
-        <div>
-          {first} {last}
+        <div className="contact-list__avatar">
+          <img src={avatar} alt="Avatar" />
         </div>
-        <div>{phone}</div>
-        <div>
+        <div className="contact-list__name">
+          <span>
+            {first} {last}
+          </span>
+        </div>
+        <div className="contact-list__phone">
+          <span class="phone-icon">
+            <FontAwesomeIcon icon={faPhone} />
+          </span>{" "}
+          {phone}
+        </div>
+        <div className="contact-list__delete">
           <button
             className="btn btn-icon"
             onClick={() => this.props.onDelete(id)}

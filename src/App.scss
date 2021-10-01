@@ -27,6 +27,11 @@ h2 {
   margin-bottom: 0.4em;
 }
 
+.btn {
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
 .btn-primary {
   color: $white;
   background: $accent-3;
@@ -39,8 +44,13 @@ h2 {
 
 .btn-icon {
   background-color: transparent;
-  color: rgba($black, 0.6);
+  color: rgba($white, 0.3);
   font-size: 18px;
+
+  &:hover,
+  &:focus {
+    color: rgba($white, 0.9);
+  }
 }
 
 .phonebook {
@@ -127,5 +137,102 @@ h2 {
   &__inner {
     height: 100%;
     padding: 2rem;
+  }
+
+  &__avatar {
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 50%;
+    }
+  }
+
+  &__name {
+    font-size: 24px;
+  }
+
+  .phone-icon {
+    margin-right: 0.4rem;
+  }
+
+  @media screen and (max-width: 799px) {
+    &__row {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 24px 24px 24px auto 24px;
+      grid-template-rows: auto 36px 32px;
+      grid-template-areas:
+        "photo photo photo name name"
+        "photo photo photo phone phone"
+        "favorite edit . . delete";
+      border-bottom: 1px solid $secondary;
+      padding: 1rem 0;
+    }
+
+    &__avatar {
+      grid-area: photo;
+    }
+
+    &__name {
+      grid-area: name;
+      font-size: 36px;
+      padding-left: 44px;
+    }
+
+    &__phone {
+      grid-area: phone;
+      padding-left: 44px;
+      position: relative;
+    }
+
+    .phone-icon {
+      position: absolute;
+      transform: translate(-150%);
+    }
+
+    &__fav {
+      grid-area: favorite;
+      padding-top: 8px;
+    }
+
+    &__delete {
+      grid-area: delete;
+      padding-top: 8px;
+    }
+  }
+
+  @media screen and (min-width: 800px) {
+    &__inner > div {
+      display: table;
+      width: 100%;
+    }
+    &__row {
+      display: table-row;
+
+      > div {
+        display: table-cell;
+        vertical-align: middle;
+        border-bottom: 1px solid $primary;
+        padding: 1rem 0;
+      }
+
+      &:last-child {
+        > div {
+          border-bottom: 0;
+        }
+      }
+    }
+
+    &__avatar {
+      width: 40px;
+    }
+
+    &__name {
+      span {
+        display: block;
+        padding-left: 10px;
+      }
+    }
   }
 }
