@@ -168,6 +168,17 @@ h2 {
           }
         }
       }
+
+      .contact-list__name {
+        font-weight: 700;
+        font-size: 32px;
+      }
+
+      + .contact-list__row:not(.fav) {
+        > div {
+          padding-top: 4rem;
+        }
+      }
     }
   }
 

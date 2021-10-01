@@ -19,7 +19,9 @@ class ContactForm extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.onAdd(this.state);
+    const fields = { ...this.state };
+
+    this.props.onAdd(fields);
 
     const inputs = document.querySelectorAll("input");
     inputs.forEach((input) => (input.value = ""));
