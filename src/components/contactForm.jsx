@@ -4,9 +4,9 @@ class ContactForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      firstName: "",
-      lastName: "",
+      name: "",
       phone: "",
+      error: "",
     };
   }
 
@@ -19,45 +19,59 @@ class ContactForm extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    const fields = { ...this.state };
+    // const { name, phone } = this.state;
 
-    this.props.onAdd(fields);
+    // Format the Name
+    const name = this.state.name.split(" ");
+    const lastName = name.pop();
+    const firstName = name.join(" ");
 
-    const inputs = document.querySelectorAll("input");
-    inputs.forEach((input) => (input.value = ""));
+    // Validate Phone Number
+    const phoneNums = this.state.phone.replace(/\D/g, "");
 
-    this.setState({
-      firstName: "",
-      lastName: "",
-      phone: "",
-    });
+    if (phoneNums.length === 10) {
+      const phone = `(${phoneNums.slice(0, 3)}) ${phoneNums.slice(
+        3,
+        6
+      )}-${phoneNums.slice(6, 10)}`;
+
+      this.props.onAdd({
+        firstName: firstName,
+        lastName: lastName,
+        phone: phone,
+      });
+
+      const inputs = document.querySelectorAll("input");
+      inputs.forEach((input) => (input.value = ""));
+
+      this.setState({
+        name: "",
+        phone: "",
+        error: "",
+      });
+    } else {
+      this.setState({ error: "Please enter a 10-digit phone number" });
+    }
   };
+
+  isError = () => `contact-form__error${this.state.error ? " has-error" : ""}`;
 
   render() {
     return (
       <div className="contact-form">
         <form onSubmit={this.handleSubmit}>
           <h2>Add New Contact</h2>
-          <div class="contact-form__fields">
-            <div class="contact-form__field">
-              <label for="firstName">First Name</label>
+          <div className="contact-form__fields">
+            <div className="contact-form__field">
+              <label for="name">First Name</label>
               <input
                 type="text"
-                id="firstName"
-                name="firstName"
+                id="name"
+                name="name"
                 onChange={this.handleChange}
               />
             </div>
-            <div class="contact-form__field">
-              <label for="lastName">Last Name</label>
-              <input
-                type="text"
-                id="lastName"
-                name="lastName"
-                onChange={this.handleChange}
-              />
-            </div>
-            <div class="contact-form__field">
+            <div className="contact-form__field">
               <label for="phone">Phone Number</label>
               <input
                 type="text"
@@ -67,7 +81,8 @@ class ContactForm extends React.Component {
               />
             </div>
           </div>
-          <button class="btn btn-primary">Add</button>
+          <div className={this.isError()}>{this.state.error}</div>
+          <button className="btn btn-primary">Add</button>
         </form>
       </div>
     );

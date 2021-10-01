@@ -94,6 +94,16 @@ h2 {
     flex: 1 0 auto;
   }
 
+  &__error {
+    color: $accent-3;
+    font-weight: 700;
+    margin-bottom: 1em;
+
+    &:not(.has-error) {
+      display: none;
+    }
+  }
+
   label {
     display: block;
     font-size: 12px;
