@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 class ContactForm extends Component {
   constructor(props) {
@@ -104,7 +106,10 @@ class ContactForm extends Component {
             </div>
           </div>
           <div className={this.isError()}>{this.state.error}</div>
-          <button className="btn btn-primary">Add</button>
+          <button className="btn btn-primary">
+            <FontAwesomeIcon icon={faPlus} />
+            Add
+          </button>
         </form>
       </div>
     );
