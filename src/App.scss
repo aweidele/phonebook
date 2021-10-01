@@ -184,9 +184,11 @@ h2 {
         font-size: 32px;
       }
 
-      + .contact-list__row:not(.fav) {
-        > div {
-          padding-top: 4rem;
+      @media screen and (min-width: 800px) {
+        + .contact-list__row:not(.fav) {
+          > div {
+            padding-top: 4rem;
+          }
         }
       }
     }
@@ -197,7 +199,7 @@ h2 {
       width: 100%;
       display: grid;
       grid-template-columns: 24px 24px 24px auto 24px;
-      grid-template-rows: auto 36px 32px;
+      grid-template-rows: auto auto 32px;
       grid-template-areas:
         "photo photo photo name name"
         "photo photo photo phone phone"

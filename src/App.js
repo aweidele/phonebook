@@ -89,9 +89,7 @@ class App extends React.Component {
       fav: false,
     });
 
-    console.log(contacts);
     this.handleSort(contacts);
-    // this.setState({ contacts });
   };
 
   handleFav = (contactID) => {
