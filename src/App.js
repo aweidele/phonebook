@@ -75,13 +75,21 @@ class App extends React.Component {
   handleAdd = (formFields) => {
     const contacts = [...this.state.contacts];
     const { firstName, lastName, phone } = formFields;
+    const id =
+      Math.max.apply(
+        Math,
+        contacts.map((c) => c.id)
+      ) + 1;
+
     contacts.push({
-      id: contacts.length + 1,
+      id: id,
       first: firstName,
       last: lastName,
       phone: phone,
       fav: false,
     });
+
+    console.log(contacts);
     this.handleSort(contacts);
     // this.setState({ contacts });
   };
@@ -95,8 +103,8 @@ class App extends React.Component {
 
   render() {
     return (
-      <div class="phonebook">
-        <div class="phonebook__inner">
+      <div className="phonebook">
+        <div className="phonebook__inner">
           <ContactForm onAdd={this.handleAdd} />
           <Listing
             key={this.state.id}

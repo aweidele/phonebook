@@ -15,7 +15,7 @@ class Contact extends React.Component {
   render() {
     const { first, last, id, phone, fav } = this.props.contact;
     return (
-      <div class={this.getRowClasses(fav)}>
+      <div className={this.getRowClasses(fav)}>
         <div className="contact-list__fav">
           <button className="btn btn-icon" onClick={() => this.props.onFav(id)}>
             <FontAwesomeIcon icon={faStar} />
@@ -30,7 +30,7 @@ class Contact extends React.Component {
           </span>
         </div>
         <div className="contact-list__phone">
-          <span class="phone-icon">
+          <span className="phone-icon">
             <FontAwesomeIcon icon={faPhone} />
           </span>{" "}
           {phone}

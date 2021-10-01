@@ -19,7 +19,6 @@ class ContactForm extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    // const { name, phone } = this.state;
 
     // Format the Name
     const name = this.state.name.split(" ");
@@ -63,7 +62,7 @@ class ContactForm extends React.Component {
           <h2>Add New Contact</h2>
           <div className="contact-form__fields">
             <div className="contact-form__field">
-              <label for="name">First Name</label>
+              <label htmlFor="name">First Name</label>
               <input
                 type="text"
                 id="name"
@@ -72,7 +71,7 @@ class ContactForm extends React.Component {
               />
             </div>
             <div className="contact-form__field">
-              <label for="phone">Phone Number</label>
+              <label htmlFor="phone">Phone Number</label>
               <input
                 type="text"
                 id="phone"
