@@ -2,55 +2,13 @@ import "./App.scss";
 import React from "react";
 import ContactForm from "./components/contactForm";
 import Listing from "./components/listing";
+import contactsData from "./contacts.json";
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      contacts: [
-        {
-          id: 1,
-          first: "Tony",
-          last: "Stark",
-          phone: "(123) 456-7890",
-          fav: false,
-        },
-        {
-          id: 2,
-          first: "Bruce",
-          last: "Banner",
-          phone: "(987) 654-3210",
-          fav: false,
-        },
-        {
-          id: 3,
-          first: "Natasha",
-          last: "Romanoff",
-          phone: "(234) 567-8901",
-          fav: true,
-        },
-        {
-          id: 4,
-          first: "Thor",
-          last: "Odinson",
-          phone: "(876) 543-2109",
-          fav: false,
-        },
-        {
-          id: 5,
-          first: "Clint",
-          last: "Barton",
-          phone: "(345) 678-9012",
-          fav: false,
-        },
-        {
-          id: 6,
-          first: "Steve",
-          last: "Rogers",
-          phone: "(765) 432-1098",
-          fav: false,
-        },
-      ],
+      contacts: contactsData,
     };
     this.handleSort(this.state.contacts);
   }
