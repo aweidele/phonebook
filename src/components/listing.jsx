@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Contact from "./contact";
 
-class Listing extends React.Component {
+class Listing extends Component {
   render() {
     return (
       <React.Fragment>

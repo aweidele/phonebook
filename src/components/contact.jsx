@@ -5,7 +5,7 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { faPhone } from "@fortawesome/free-solid-svg-icons";
 import avatar from "../avatar.png";
 
-class Contact extends React.Component {
+class Contact extends Component {
   // Adding the favorite class
   getRowClasses(fav) {
     let classes = "contact-list__row";

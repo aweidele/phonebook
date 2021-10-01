@@ -25,7 +25,7 @@ class App extends React.Component {
   };
 
   handleDelete = (contactID) => {
-    const contacts = this.state.contacts.filter((c) => c.id != contactID);
+    const contacts = this.state.contacts.filter((c) => c.id !== contactID);
     console.log(contacts);
     this.setState({ contacts });
   };

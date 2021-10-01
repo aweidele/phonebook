@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class ContactForm extends React.Component {
+class ContactForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
