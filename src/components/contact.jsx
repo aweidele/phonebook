@@ -17,7 +17,7 @@ class Contact extends React.Component {
     return (
       <div class={this.getRowClasses(fav)}>
         <div className="contact-list__fav">
-          <button className="btn btn-icon">
+          <button className="btn btn-icon" onClick={() => this.props.onFav(id)}>
             <FontAwesomeIcon icon={faStar} />
           </button>
         </div>

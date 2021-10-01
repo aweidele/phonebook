@@ -13,6 +13,7 @@ class Listing extends React.Component {
                   key={i}
                   contact={contact}
                   onDelete={this.props.onDelete}
+                  onFav={this.props.onFav}
                 />
               ))}
             </div>

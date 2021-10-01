@@ -80,9 +80,17 @@ class App extends React.Component {
       first: firstName,
       last: lastName,
       phone: phone,
+      fav: false,
     });
     this.handleSort(contacts);
     // this.setState({ contacts });
+  };
+
+  handleFav = (contactID) => {
+    const contacts = [...this.state.contacts];
+    const row = contacts.findIndex((element) => element.id === contactID);
+    contacts[row].fav = contacts[row].fav ? false : true;
+    this.handleSort(contacts);
   };
 
   render() {
@@ -95,6 +103,7 @@ class App extends React.Component {
             contacts={this.state.contacts}
             onSort={this.handleSort}
             onDelete={this.handleDelete}
+            onFav={this.handleFav}
           />
         </div>
       </div>
