@@ -76,13 +76,15 @@ class App extends React.Component {
   render() {
     return (
       <div class="phonebook">
-        <ContactForm onAdd={this.handleAdd} />
-        <Listing
-          key={this.state.id}
-          contacts={this.state.contacts}
-          onSort={this.handleSort}
-          onDelete={this.handleDelete}
-        />
+        <div class="phonebook__inner">
+          <ContactForm onAdd={this.handleAdd} />
+          <Listing
+            key={this.state.id}
+            contacts={this.state.contacts}
+            onSort={this.handleSort}
+            onDelete={this.handleDelete}
+          />
+        </div>
       </div>
     );
   }

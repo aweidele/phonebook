@@ -3,28 +3,129 @@
   padding: 0;
   border: 0;
   outline: none;
+  box-sizing: border-box;
+}
+
+$primary: #264653;
+$secondary: #2a9d8f;
+$accent-1: #e9c46a;
+$accent-2: #f4a261;
+$accent-3: #e76f51;
+
+$white: #ffffff;
+$black: #000000;
+
+body {
+  background: #c5cdcc;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+}
+
+h2 {
+  font-weight: 300;
+  font-size: 24px;
+  margin-bottom: 0.4em;
+}
+
+.btn-primary {
+  color: $white;
+  background: $accent-3;
+  padding: 0.5rem 2rem;
+  font-weight: 600;
+  font-size: 16px;
+  text-transform: uppercase;
+  border-radius: 3px;
+}
+
+.btn-icon {
+  background-color: transparent;
+  color: rgba($black, 0.6);
+  font-size: 18px;
 }
 
 .phonebook {
   width: 100%;
-  max-width: 600px;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  height: 100vh;
+  max-width: 800px;
   margin: auto;
+  color: $white;
+
+  &__inner {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    background-image: linear-gradient(0deg, $secondary 0%, $primary 100%);
+    box-shadow: 0px 0px 1rem rgba(black, 0.9);
+    overflow: hidden;
+  }
+
+  @media screen and (min-width: 800px) {
+    padding: 2rem 0;
+    &__inner {
+      border-radius: 20px;
+    }
+  }
+}
+
+.contact-form {
   padding: 2rem;
+  background: rgba($primary, 0.5);
+  border-bottom: 2px solid $primary;
+
+  &__fields {
+    padding-bottom: 1em;
+  }
+
+  &__field {
+    padding: 0.4rem 0;
+    flex: 1 0 auto;
+  }
+
+  label {
+    display: block;
+    font-size: 12px;
+    text-transform: uppercase;
+    margin-bottom: 0.2rem;
+  }
+
+  input {
+    width: 100%;
+    display: block;
+    font-size: 16px;
+    padding: 0.5rem;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 300;
+    border-radius: 5px;
+  }
+
+  @media screen and (max-width: 800px) {
+    .btn {
+      display: block;
+      width: 100%;
+    }
+  }
+
+  @media screen and (min-width: 800px) {
+    &__fields {
+      display: flex;
+      margin: 0 -0.4rem;
+    }
+
+    &__field {
+      padding: 0 0.4rem;
+    }
+  }
 }
 
 .contact-list {
-  margin: 2rem 0;
-  display: table;
+  flex-grow: 1;
+  overflow: auto;
 
-  &__row {
-    display: table-row;
-
-    > div {
-      display: table-cell;
-    }
+  &__inner {
+    height: 100%;
+    padding: 2rem;
   }
 }

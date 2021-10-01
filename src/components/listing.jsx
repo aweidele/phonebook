@@ -6,13 +6,15 @@ class Listing extends React.Component {
     return (
       <React.Fragment>
         <div className="contact-list">
-          {this.props.contacts.map((contact) => (
-            <Contact
-              key={contact.id}
-              contact={contact}
-              onDelete={this.props.onDelete}
-            />
-          ))}
+          <div className="contact-list__inner">
+            {this.props.contacts.map((contact) => (
+              <Contact
+                key={contact.id}
+                contact={contact}
+                onDelete={this.props.onDelete}
+              />
+            ))}
+          </div>
         </div>
       </React.Fragment>
     );

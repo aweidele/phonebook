@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 class Contact extends React.Component {
   render() {
@@ -6,8 +9,8 @@ class Contact extends React.Component {
     return (
       <div class="contact-list__row">
         <div>
-          <button>
-            <i class="far fa-star"></i>
+          <button className="btn btn-icon">
+            <FontAwesomeIcon icon={faStar} />
           </button>
         </div>
         <div>
@@ -15,8 +18,11 @@ class Contact extends React.Component {
         </div>
         <div>{phone}</div>
         <div>
-          <button onClick={() => this.props.onDelete(id)}>
-            <i class="fas fa-trash-alt"></i>
+          <button
+            className="btn btn-icon"
+            onClick={() => this.props.onDelete(id)}
+          >
+            <FontAwesomeIcon icon={faTrashAlt} />
           </button>
         </div>
       </div>
