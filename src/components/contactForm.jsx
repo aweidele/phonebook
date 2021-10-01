@@ -10,6 +10,7 @@ class ContactForm extends React.Component {
     };
   }
 
+  // Handle typing in the form fields
   handleChange = (event) => {
     const n = event.target.name;
     const v = event.target.value;
@@ -17,23 +18,46 @@ class ContactForm extends React.Component {
     this.setState({ [n]: v });
   };
 
+  // Submit form
   handleSubmit = (event) => {
     event.preventDefault();
+    let errorMsg = "";
 
     // Format the Name
-    const name = this.state.name.split(" ");
+    const nameState = this.state.name;
+    const name = nameState.split(" ");
     const lastName = name.pop();
     const firstName = name.join(" ");
 
+    // Check if name is blank
+    if (!nameState) {
+      errorMsg = "Please enter a name";
+    }
+
+    // Check for duplicates
+    const dup = this.props.contacts
+      .map((c) => `${c.first} ${c.last}`)
+      .find((n) => n === nameState);
+    if (dup) {
+      errorMsg = "Entry already exists";
+    }
+
     // Validate Phone Number
     const phoneNums = this.state.phone.replace(/\D/g, "");
-
+    let phone = "";
     if (phoneNums.length === 10) {
-      const phone = `(${phoneNums.slice(0, 3)}) ${phoneNums.slice(
+      phone = `(${phoneNums.slice(0, 3)}) ${phoneNums.slice(
         3,
         6
       )}-${phoneNums.slice(6, 10)}`;
+    } else {
+      errorMsg = "Please enter a 10-digit phone number";
+    }
 
+    // Submit if there are no errors
+    if (errorMsg) {
+      this.setState({ error: errorMsg });
+    } else {
       this.props.onAdd({
         firstName: firstName,
         lastName: lastName,
@@ -48,11 +72,10 @@ class ContactForm extends React.Component {
         phone: "",
         error: "",
       });
-    } else {
-      this.setState({ error: "Please enter a 10-digit phone number" });
     }
   };
 
+  // Rendering the error message
   isError = () => `contact-form__error${this.state.error ? " has-error" : ""}`;
 
   render() {
@@ -62,7 +85,7 @@ class ContactForm extends React.Component {
           <h2>Add New Contact</h2>
           <div className="contact-form__fields">
             <div className="contact-form__field">
-              <label htmlFor="name">First Name</label>
+              <label htmlFor="name">Name</label>
               <input
                 type="text"
                 id="name"

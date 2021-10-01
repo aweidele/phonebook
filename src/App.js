@@ -61,7 +61,10 @@ class App extends React.Component {
     return (
       <div className="phonebook">
         <div className="phonebook__inner">
-          <ContactForm onAdd={this.handleAdd} />
+          <header>
+            <h1>Aaron's React Phonebook</h1>
+          </header>
+          <ContactForm onAdd={this.handleAdd} contacts={this.state.contacts} />
           <Listing
             key={this.state.id}
             contacts={this.state.contacts}
