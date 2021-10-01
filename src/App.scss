@@ -156,6 +156,21 @@ h2 {
     margin-right: 0.4rem;
   }
 
+  &__row {
+    &.fav {
+      .contact-list__fav {
+        .btn-icon {
+          color: $accent-1;
+
+          &:hover,
+          &:focus {
+            color: $accent-2;
+          }
+        }
+      }
+    }
+  }
+
   @media screen and (max-width: 799px) {
     &__row {
       width: 100%;

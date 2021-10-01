@@ -8,9 +8,9 @@ class Listing extends React.Component {
         <div className="contact-list">
           <div className="contact-list__inner">
             <div>
-              {this.props.contacts.map((contact) => (
+              {this.props.contacts.map((contact, i) => (
                 <Contact
-                  key={contact.id}
+                  key={i}
                   contact={contact}
                   onDelete={this.props.onDelete}
                 />

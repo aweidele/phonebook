@@ -6,10 +6,16 @@ import { faPhone } from "@fortawesome/free-solid-svg-icons";
 import avatar from "../avatar.png";
 
 class Contact extends React.Component {
+  getRowClasses(fav) {
+    let classes = "contact-list__row";
+    if (fav) classes += " fav";
+    return classes;
+  }
+
   render() {
-    const { first, last, id, phone } = this.props.contact;
+    const { first, last, id, phone, fav } = this.props.contact;
     return (
-      <div class="contact-list__row">
+      <div class={this.getRowClasses(fav)}>
         <div className="contact-list__fav">
           <button className="btn btn-icon">
             <FontAwesomeIcon icon={faStar} />
